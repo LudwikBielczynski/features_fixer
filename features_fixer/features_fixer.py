@@ -21,7 +21,7 @@ class FeatureFixerAbstract(ABC):
 class FeatureFixer(FeatureFixerAbstract):
 
     def __init__(self,
-                 logger: Logger,
+                 logger: 'Logger',
                  standardizer: 'Standardizer',
                  normalizer: 'Normalizer',
                  ) -> None:

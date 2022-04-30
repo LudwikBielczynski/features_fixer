@@ -18,17 +18,32 @@ class ScalerAbstract(ABC):
             columns = df.columns
         return columns
 
-    def transform(self, df: pd.DataFrame, columns: Optional[list[str]] = None) -> pd.DataFrame:
+    def transform(self,
+                  df: pd.DataFrame,
+                  columns: Optional[list[str]] = None,
+                  transpose: bool = False,
+                  ) -> pd.DataFrame:
         columns = self._get_columns(df, columns)
 
-        self.scaler.fit(df[columns])
-        df.loc[:, columns] = self.scaler.transform(df[columns])
+        if transpose:
+            self.scaler.fit(df[columns].T)
+            df.loc[:, columns] = self.scaler.transform(df[columns].T).T
+        else:
+            self.scaler.fit(df[columns])
+            df.loc[:, columns] = self.scaler.transform(df[columns])
+
         return df
 
     def inverse_transform(self,
                           df: pd.DataFrame,
                           columns: Optional[list[str]] = None,
+                          transpose: bool = False,
                           ) -> pd.DataFrame:
         columns = self._get_columns(df, columns)
-        df.loc[:, columns] = self.scaler.inverse_transform(df[columns])
+
+        if transpose:
+            df.loc[:, columns] = self.scaler.inverse_transform(df[columns].T).T
+        else:
+            df.loc[:, columns] = self.scaler.inverse_transform(df[columns])
+
         return df
