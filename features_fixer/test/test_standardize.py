@@ -9,10 +9,10 @@ def test_basic_standardization():
     df = pd.DataFrame({'a': [0, 1, 2, 3, 5]})
 
     # Act
-    df_standardize = standardizer.transform(df)
+    df_standardized = standardizer.transform(df)
 
-    assert df_standardize['a'].mean() == pytest.approx(0., 0.01)
-    assert df_standardize['a'].std() == pytest.approx(1., 0.3)
+    assert df_standardized['a'].mean() == pytest.approx(0., 0.01)
+    assert df_standardized['a'].std() == pytest.approx(1., 0.3)
 
 def test_selected_column():
     # Arrange
@@ -23,9 +23,9 @@ def test_selected_column():
                        })
 
     # Act
-    df_standardize = standardizer.transform(df, columns=['a'])
+    df_standardized = standardizer.transform(df, columns=['a'])
 
-    assert df_standardize['a'].mean() == pytest.approx(0., 0.01)
-    assert df_standardize['a'].std() == pytest.approx(1., 0.3)
+    assert df_standardized['a'].mean() == pytest.approx(0., 0.01)
+    assert df_standardized['a'].std() == pytest.approx(1., 0.3)
 
-    assert df_standardize['b'].tolist() == values
+    assert df_standardized['b'].tolist() == values
