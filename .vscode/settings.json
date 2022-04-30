@@ -1,0 +1,21 @@
+{
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/**": true,
+        "**/.mypy_cache/**": true,
+        "**/.pytest_cache/**": true,
+        "**/__pycache__/**": true,
+        "**/.git": true
+    },
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "python.testing.pytestArgs": [
+        "."
+    ],
+    "files.exclude": {
+        "**/__pycache__/**": true,
+        "**/.mypy_cache/**": true,
+        "**/.pytest_cache/**": true
+    },
+}
