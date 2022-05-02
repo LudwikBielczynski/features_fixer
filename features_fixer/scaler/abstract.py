@@ -18,6 +18,7 @@ class ScalerAbstract(ABC):
     def _get_columns(self, df: pd.DataFrame, columns: Optional[list[str]] = None) -> list[str]:
         if columns is None:
             columns = df.columns
+
         return columns
 
     def transform(self,
