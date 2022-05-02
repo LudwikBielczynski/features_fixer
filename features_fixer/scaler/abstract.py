@@ -13,6 +13,8 @@ class ScalerAbstract(ABC):
     def scaler(self) -> 'TransformerMixin':
         pass
 
+    # TODO: Scale only numeric columns
+
     def _get_columns(self, df: pd.DataFrame, columns: Optional[list[str]] = None) -> list[str]:
         if columns is None:
             columns = df.columns
